@@ -1,0 +1,20 @@
+<%- include('../partials/header') %>
+
+<h2>Book Your Flight</h2>
+<form action="/flights" method="POST">
+	<label>Airline:
+		<input type="text" name="airline">
+	</label><br>
+	<label>Airport:
+		<input type="text" name="airport">
+	</label><br>
+	<label>Flight Number:
+		<input type="number" name="flightNo">
+	</label><br>
+    <span>Departs: </span>
+    <input type="datetime-local" name="departs"> 
+    <br>
+	<input type="submit" value="Book Flight">
+</form>
+
+<%- include('../partials/footer') %>
