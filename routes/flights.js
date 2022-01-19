@@ -1,5 +1,4 @@
 var express = require('express');
-const flights = require('../controllers/flights');
 var router = express.Router();
 var flightsCtrl = require('../controllers/flights');
 
@@ -13,6 +12,10 @@ router.get('/new', flightsCtrl.new);
 
 // Create POST /flights
 router.post('/', flightsCtrl.create)
+
+// show GET /flights/:id
+router.get('/:id', flightsCtrl.show);
+
 
 
 
