@@ -21,7 +21,7 @@ function create(req, res) {
     const flight = new Flight(req.body);
     flight.save(function(err) {
       // one way to handle errors
-      if (err) return res.render('flights/new');
+      if (err) return res.render('flights/new', { ticket });
       console.log(flight);
       res.redirect('/flights'); 
     });

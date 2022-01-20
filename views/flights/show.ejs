@@ -9,8 +9,6 @@
             <th>Airport</th>
             <th>Flight Number</th>
             <th>Departure Date</th>
-            <th>Arrival Airport</th>
-            <th>Arrival Date</th>
         </tr>
     </thead>
     <tbody>
@@ -68,7 +66,16 @@
         <input type="datetime-local" name="arrival">
     </label><br>
     <input type="submit" value="Add Arrival Information">
+    
 </form>
+
+<h2>PURCHASE YOUR TICKET</h2>
+<section id="badge-container">
+  <% tickets.forEach(function(t) { %>
+    <article class="badge"><%= t.seat %></article>
+  <% }) %>
+</section>
+<a id="bookticketlink" href="/flights/<%= flight._id%>/tickets/new">Book Ticket</a>
 
 
 <%- include('../partials/footer') %>
