@@ -29,7 +29,7 @@
     </tbody>
 </table>
 
-<h2>Arrival:</h2>
+<h2>Destination:</h2>
 <% if (flight.destinations.length) { %>
 <table>
     <thead>
@@ -51,6 +51,7 @@
     <h5>No Destinations Yet</h5>
     <% } %>
 
+
 <h2>ADD YOUR DESTINATION</h2>
 <form action="/flights/<%= flight._id %>/destinations" method="POST">
     <label>Destination Airport:
@@ -63,19 +64,48 @@
         </select>
     </label><br>
     <label>Arrival Date:
-        <input type="datetime-local" name="arrival">
+        <input type="datetime-local" required name="arrival">
     </label><br>
     <input type="submit" value="Add Arrival Information">
-    
 </form>
 
-<h2>PURCHASE YOUR TICKET</h2>
-<section id="badge-container">
-  <% tickets.forEach(function(t) { %>
-    <article class="badge"><%= t.seat %></article>
-  <% }) %>
-</section>
-<a id="bookticketlink" href="/flights/<%= flight._id%>/tickets/new">Book Ticket</a>
+<h2>Tickets:</h2>
+<% if (tickets.length) { %>
+<table>
+    <thead>
+        <tr>
+            <th>Seat Number:</th>
+            <th>Price:</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% tickets.forEach(function(t) { %>
+        <tr>
+            <td>
+                <%= t.seat %>
+            </td>
+            <td>
+                $<%= t.price.toFixed(2) %>
+            </td>
+        </tr>
+        <% }); %>
+    </tbody>
+</table>
+<% } else { %>
+<h5>No Tickets Yet</h5>
+<% } %>
 
+<h2>PURCHASE YOUR TICKET</h2>
+
+<form action="/flights/<%= flight._id %>/tickets" method="POST">
+    <label>Seat:
+        <div>Please choose: A-F followed by a seat number 1-99</div>
+        <input name="seat" required pattern="[A-F][1-9]\d?">
+    </label><br>
+    <label>Price (Between $199 and $599):
+        <input min="199" max="599" type="number" name="price">
+    </label><br>
+    <input type="submit" value="New Ticket" id="button">
+</form>
 
 <%- include('../partials/footer') %>
