@@ -1,6 +1,7 @@
 <%- include('../partials/header') %>
-
-<h2>Book Your Flight</h2>
+<br>
+<h2>BOOK YOUR FLIGHT:</h2>
+<br>
 <form action="/flights" method="POST">
 	<label>Airline:
 		<select name="airline">
@@ -8,7 +9,7 @@
 			<option value="Southwest">Southwest</option>
 			<option value="United">United</option>
 		  </select>
-	</label><br>
+	</label><br><br>
 	<label>Airport:
 		<select name="airport">
 			<option value="AUS">AUS</option>
@@ -17,13 +18,13 @@
 			<option value="LAX">LAX</option>
 			<option value="SAN">SAN</option>
 		  </select>
-	</label><br>
+	</label><br><br>
 	<label>Flight Number:
 		<input type="number" name="flightNo">
-	</label><br>
+	</label><br><br>
     <span>Departs: </span>
     <input type="datetime-local" required name="departure"> 
-    <br>
+    <br><br>
 	<input type="submit" value="Book Flight">
 </form>
 
